@@ -105,7 +105,7 @@ def test_redis_expiration_lifetime(
     ttl_3 = redis.ttl(sid_3)
     assert MY_TTL-1 <= ttl_3 <= MY_TTL
     
-    # wait once more, beyond t_0 
+    # wait once more, beyond t_0 + MY_TTL
     time.sleep(MY_TTL-1)
     # t = 2xMY_TTL + epsilon
     res_4 = redis_client.get('/store-in-session/k1/v1/')
